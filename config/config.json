@@ -1,0 +1,22 @@
+{
+  "service_port": 3000,
+  "kafka": {
+    "consumers": {
+      "entity": {
+        "hosts": ["127.0.0.1:9092"],
+        "group": "entity-details",
+        "topic": "entity-data"
+      }
+    }
+  },
+  "elasticsearch": {
+    "host": "localhost:9200",
+    "log": [
+      {
+        "type": "stdio",
+        "levels": ["error", "warning"]
+      }
+    ],
+    "apiVersion": "7.2"
+  }
+}
