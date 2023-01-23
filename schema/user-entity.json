@@ -1,0 +1,117 @@
+{
+  "settings": {
+    "number_of_shards": 2,
+    "number_of_replicas": 1,
+    "analysis": {
+      "normalizer": {
+        "lowercase_normalizer": {
+          "type": "custom",
+          "char_filter": [],
+          "filter": ["lowercase"]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "dynamic": "strict",
+    "properties": {
+      "uid": {
+        "type": "keyword"
+      },
+      "first_name": {
+        "type": "text",
+        "fields": {
+          "normalized": {
+            "type": "keyword",
+            "normalizer": "lowercase_normalizer"
+          }
+        }
+      },
+      "last_name": {
+        "type": "text",
+        "fields": {
+          "normalized": {
+            "type": "keyword",
+            "normalizer": "lowercase_normalizer"
+          }
+        }
+      },
+      "email_address": {
+        "type": "keyword",
+        "normalizer": "lowercase_normalizer"
+      },
+      "user_name": {
+        "type": "text",
+        "fields": {
+          "normalized": {
+            "type": "keyword",
+            "normalizer": "lowercase_normalizer"
+          }
+        }
+      },
+      "country_code": {
+        "type": "keyword"
+      },
+      "mobile_number": {
+        "type": "keyword",
+        "normalizer": "lowercase_normalizer"
+      },
+      "address": {
+        "type": "text",
+        "fields": {
+          "normalized": {
+            "type": "keyword",
+            "normalizer": "lowercase_normalizer"
+          }
+        }
+      },
+      "city": {
+        "type": "keyword",
+        "normalizer": "lowercase_normalizer"
+      },
+      "country": {
+        "type": "keyword",
+        "normalizer": "lowercase_normalizer"
+      },
+      "is_active": {
+        "type": "boolean"
+      },
+      "created_by": {
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "keyword"
+          },
+          "first_name": {
+            "type": "text"
+          },
+          "last_name": {
+            "type": "text"
+          }
+        }
+      },
+      "updated_by": {
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "keyword"
+          },
+          "first_name": {
+            "type": "text"
+          },
+          "last_name": {
+            "type": "text"
+          }
+        }
+      },
+      "created_at": {
+        "type": "date",
+        "format": "epoch_millis"
+      },
+      "updated_at": {
+        "type": "date",
+        "format": "epoch_millis"
+      }
+    }
+  }
+}
