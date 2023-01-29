@@ -1,0 +1,158 @@
+{
+  "settings": {
+    "number_of_shards": 2,
+    "number_of_replicas": 1,
+    "analysis": {
+      "normalizer": {
+        "lowercase_normalizer": {
+          "type": "custom",
+          "char_filter": [],
+          "filter": ["lowercase"]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "dynamic": "strict",
+    "properties": {
+      "cid": {
+        "type": "keyword"
+      },
+      "short_code": {
+        "type": "keyword",
+        "fields": {
+          "normalized": {
+            "type": "keyword",
+            "normalizer": "lowercase_normalizer"
+          }
+        }
+      },
+      "name": {
+        "type": "text",
+        "fields": {
+          "normalized": {
+            "type": "keyword",
+            "normalizer": "lowercase_normalizer"
+          }
+        }
+      },
+      "gstin": {
+        "type": "keyword"
+      },
+      "tan": {
+        "type": "keyword"
+      },
+      "tin": {
+        "type": "keyword"
+      },
+      "cin": {
+        "type": "keyword"
+      },
+      "pan": {
+        "type": "keyword"
+      },
+      "types": {
+        "type": "keyword"
+      },
+      "contact_number": {
+        "type": "keyword"
+      },
+      "contact_user_id": {
+        "type": "keyword"
+      },
+      "contact_user": {
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "keyword"
+          },
+          "first_name": {
+            "type": "text"
+          },
+          "last_name": {
+            "type": "text"
+          }
+        }
+      },
+      "place_id": {
+        "type": "keyword"
+      },
+      "place": {
+        "type": "object",
+        "properties": {
+          "pid": {
+            "type": "keyword"
+          },
+          "label": {
+            "type": "text"
+          },
+          "address": {
+            "type": "text"
+          }
+        }
+      },
+      "head_office_id": {
+        "type": "keyword"
+      },
+      "head_office": {
+        "type": "object",
+        "properties": {
+          "pid": {
+            "type": "keyword"
+          },
+          "label": {
+            "type": "text"
+          },
+          "address": {
+            "type": "text"
+          }
+        }
+      },
+      "is_active": {
+        "type": "boolean"
+      },
+      "created_at": {
+        "type": "date",
+        "format": "epoch_millis"
+      },
+      "updated_at": {
+        "type": "date",
+        "format": "epoch_millis"
+      },
+      "created_by_uid": {
+        "type": "keyword"
+      },
+      "created_by": {
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "keyword"
+          },
+          "first_name": {
+            "type": "text"
+          },
+          "last_name": {
+            "type": "text"
+          }
+        }
+      },
+      "updated_by_uid": {
+        "type": "keyword"
+      },
+      "updated_by": {
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "keyword"
+          },
+          "first_name": {
+            "type": "text"
+          },
+          "last_name": {
+            "type": "text"
+          }
+        }
+      }
+    }
+  }
+}
