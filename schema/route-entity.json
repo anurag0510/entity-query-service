@@ -1,0 +1,184 @@
+{
+  "settings": {
+    "number_of_shards": 2,
+    "number_of_replicas": 1,
+    "analysis": {
+      "normalizer": {
+        "lowercase_normalizer": {
+          "type": "custom",
+          "char_filter": [],
+          "filter": ["lowercase"]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "rid": {
+        "type": "keyword"
+      },
+      "parent_id": {
+        "type": "keyword"
+      },
+      "parent": {
+        "type": "object",
+        "properties": {
+          "cid": {
+            "type": "keyword"
+          },
+          "name": {
+            "type": "text"
+          }
+        }
+      },
+      "short_code": {
+        "type": "keyword",
+        "fields": {
+          "normalized": {
+            "type": "keyword",
+            "normalizer": "lowercase_normalizer"
+          }
+        }
+      },
+      "label": {
+        "type": "text",
+        "fields": {
+          "normalized": {
+            "type": "keyword",
+            "normalizer": "lowercase_normalizer"
+          }
+        }
+      },
+      "attributes": {
+        "type": "object"
+      },
+      "origin_pid": {
+        "type": "keyword"
+      },
+      "origin": {
+        "type": "object",
+        "properties": {
+          "pid": {
+            "type": "keyword"
+          },
+          "label": {
+            "type": "text"
+          },
+          "address": {
+            "type": "text"
+          },
+          "lat": {
+            "type": "double"
+          },
+          "lng": {
+            "type": "double"
+          },
+          "short_code": {
+            "type": "keyword"
+          },
+          "attributes": {
+            "type": "object"
+          },
+          "formatted_address": {
+            "type": "text"
+          },
+          "region": {
+            "type": "text"
+          },
+          "locality": {
+            "type": "text"
+          },
+          "country": {
+            "type": "text"
+          },
+          "postal_code": {
+            "type": "long"
+          }
+        }
+      },
+      "destination_pid": {
+        "type": "keyword"
+      },
+      "destination": {
+        "type": "object",
+        "properties": {
+          "pid": {
+            "type": "keyword"
+          },
+          "label": {
+            "type": "text"
+          },
+          "address": {
+            "type": "text"
+          },
+          "lat": {
+            "type": "double"
+          },
+          "lng": {
+            "type": "double"
+          },
+          "short_code": {
+            "type": "keyword"
+          },
+          "attributes": {
+            "type": "object"
+          },
+          "formatted_address": {
+            "type": "text"
+          },
+          "region": {
+            "type": "text"
+          },
+          "locality": {
+            "type": "text"
+          },
+          "country": {
+            "type": "text"
+          },
+          "postal_code": {
+            "type": "long"
+          }
+        }
+      },
+      "is_active": {
+        "type": "boolean"
+      },
+      "created_at": {
+        "type": "date",
+        "format": "epoch_millis"
+      },
+      "updated_at": {
+        "type": "date",
+        "format": "epoch_millis"
+      },
+      "created_by": {
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "keyword"
+          },
+          "first_name": {
+            "type": "text"
+          },
+          "last_name": {
+            "type": "text"
+          }
+        }
+      },
+      "updated_by": {
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "keyword"
+          },
+          "first_name": {
+            "type": "text"
+          },
+          "last_name": {
+            "type": "text"
+          }
+        }
+      }
+    }
+  }
+}
